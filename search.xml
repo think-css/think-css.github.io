@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Unipush常见问题20191206</title>
+    <url>/2019/12/08/Unipush%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%9820191206/</url>
+    <content><![CDATA[<h1 id="Unipush常见问题"><a href="#Unipush常见问题" class="headerlink" title="Unipush常见问题"></a>Unipush常见问题</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>使用此文档前，请先 认真阅读 <a href="https://ask.dcloud.net.cn/article/35622" target="_blank" rel="noopener">UniPush 使用指南</a> 及文中涉及到的相关文档说明，了解下什么是 UniPush。 </p>
+<p>本文分多厂商接入流程介绍、Android及厂商推送常见问题、iOS推送常见问题和Unipush后台常见问题四部分内容，旨在帮助使用Unipush的用户解决集成或使用过程中常遇见的问题，让用户更顺畅地使用Unipush。</p>
+<p>如按照本文介绍的内容排查问题之后仍有异常情况，可联系个推技术支持QQ：3007288187 咨询。</p>
+<h2 id="多厂商推送接入流程"><a href="#多厂商推送接入流程" class="headerlink" title="多厂商推送接入流程"></a>多厂商推送接入流程</h2><p>1、开通UniPush推送服务：参考<a href="https://ask.dcloud.net.cn/article/35622" target="_blank" rel="noopener">《UniPush使用指南》</a>；</p>
+<p>2、厂商推送申请：按照<a href="https://www.dcloud.io/docs/a/unipush/manufacturer.pdf" target="_blank" rel="noopener">《厂商推送应用创建配置流程》</a>文档，在各厂商平台申请推送参数，并填写配置到<a href="https://dev.dcloud.net.cn/" target="_blank" rel="noopener">DCloud开发者中心</a>特殊机型里面；</p>
+<p>3、客户端集成：<u><strong>在HBuilderX中提交云端打包，下载apk安装测试</strong></u>；</p>
+<p>4、服务端推送：平台推送按照UniPush使用指南设置即可；服务端API接口使用透传升级模板，按照<a href="https://www.dcloud.io/docs/a/unipush/java.pdf" target="_blank" rel="noopener">《多厂商推送透传消息带通知使用文档》</a> 文档，添加配置厂商推送代码；</p>
+<p>5、离线推送测试：正常收到厂商通知和传递参数即可。</p>
+<h2 id="Android及厂商推送常见问题"><a href="#Android及厂商推送常见问题" class="headerlink" title="Android及厂商推送常见问题"></a>Android及厂商推送常见问题</h2><h3 id="1、为什么厂商推送收不到离线消息？"><a href="#1、为什么厂商推送收不到离线消息？" class="headerlink" title="1、为什么厂商推送收不到离线消息？"></a>1、为什么厂商推送收不到离线消息？</h3><p><strong>通用原因参考：</strong></p>
+<ul>
+<li>Dcloud平台正常填写保存各厂商渠道推送参数；<br><img src="image%5CAndroid%E5%8F%8A%E5%A4%9A%E5%8E%82%E5%95%86%5C%E5%8E%82%E5%95%86%E6%8E%A8%E9%80%81%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE.png" alt=""></li>
+<li>Dcloud平台、应用、厂商平台的应用包名和参数保持一致；</li>
+<li>DCloud开发者中心配置厂商参数保存以后，开启通道开关、开启推送兼容、关闭静默时间；</li>
+<li>服务端推送是否使用透传模板，并参照文档设置了正确的intent参数。</li>
+</ul>
+<p><strong>华为通道参考原因：</strong></p>
+<ul>
+<li>设备条件：华为rom且华为rom版本⼤于等于 emui4.1；</li>
+<li>在华为手机上必须安装“华为移动服务”才能使用华为的厂商推送通道 （设置-应用管理-系统应用-华为移动服务）；</li>
+<li><u><strong>华为平台创建PUSH权益的时候，sha256指纹证书需要填写上，并且华为推送测试需要使用自有证书打包；</strong></u>。<br>华为平台sha256指纹证书填写如图：<br><img src="image%5CAndroid%E5%8F%8A%E5%A4%9A%E5%8E%82%E5%95%86%5C%E5%8D%8E%E4%B8%BA%E5%B9%B3%E5%8F%B0sha256%E6%8C%87%E7%BA%B9%E8%AF%81%E4%B9%A6%E5%A1%AB%E5%86%99.png" alt=""><br>应用云端打包设置证书如图：<br><img src="image%5CAndroid%E5%8F%8A%E5%A4%9A%E5%8E%82%E5%95%86%5CAndroid%E5%BA%94%E7%94%A8%E8%AF%81%E4%B9%A6%E9%85%8D%E7%BD%AE.png" alt=""></li>
+</ul>
+<p><strong>小米通道参考原因：</strong></p>
+<ul>
+<li>设备条件：⼩⽶rom且⼩⽶服务框架（包名:com.xiaomi.xmsf）版本号⼤于等于105；</li>
+<li>应用通知权限页面系统推送设置是否已为重要通知；</li>
+</ul>
+<p><strong>魅族通道参考原因：</strong></p>
+<ul>
+<li>设备条件：魅族rom且魅族rom版本⼤于等于5.x</li>
+<li>应用通知权限页面系统推送设置是否已为重要通知；</li>
+</ul>
+<p><strong>oppo通道参考原因：</strong></p>
+<ul>
+<li>设备条件：oppo colorOS rom且版本号⼤于等于3.1；</li>
+<li>应用的通知权限需要开启；</li>
+<li>oppo应用需要在相应应用市场上架app才支持厂商推送；</li>
+</ul>
+<p><strong>vivo通道参考原因：</strong></p>
+<ul>
+<li>设备条件：具体请参考<a href="https://dev.vivo.com.cn/documentCenter/doc/156" target="_blank" rel="noopener">vivo推送常见问题汇总</a>；</li>
+<li>应用的通知权限需要开启；</li>
+<li>vivo 应用需要在相应应用市场上架app才支持厂商推送；</li>
+<li>vivo 对推送内容有要求：纯数字、纯英文、纯符号、”测试“字样、符号加数字等不能在正式应用上推送；</li>
+<li>HBuilderX最低版2.1.0及以上支持vivo推送功能。</li>
+</ul>
+<h3 id="2、为什么Intent无法跳转？"><a href="#2、为什么Intent无法跳转？" class="headerlink" title="2、为什么Intent无法跳转？"></a>2、为什么Intent无法跳转？</h3><p>排查步骤如下：</p>
+<ul>
+<li>本地先验证该Intent是否能够正常跳转；</li>
+<li>Intent建议使用Android自带API：Intent.toURI() 生成；</li>
+<li>特殊字符请使用UrlEncode编码。</li>
+</ul>
+<h3 id="3、为什么intent客户端接收到参数乱码？"><a href="#3、为什么intent客户端接收到参数乱码？" class="headerlink" title="3、为什么intent客户端接收到参数乱码？"></a>3、为什么intent客户端接收到参数乱码？</h3><ul>
+<li><p>intent参数里面有 % 符号，客户端接收会乱码；</p>
+</li>
+<li><p>intent参数里面有 # 和 ; 符号，会影响跳转；</p>
+</li>
+<li><p>urlencode编码处理后正常，urlencode(%)=%25，urlencode(#)=%23，urlencode(;)=%3b 。</p>
+<p><img src="image%5CAndroid%E5%8F%8A%E5%A4%9A%E5%8E%82%E5%95%86%5C%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%8E%A5%E6%94%B6-intent%E5%8F%82%E6%95%B0-%E4%B9%B1%E7%A0%81.png" alt=""></p>
+</li>
+</ul>
+<h3 id="4、哪些厂商支持角标显示？"><a href="#4、哪些厂商支持角标显示？" class="headerlink" title="4、哪些厂商支持角标显示？"></a>4、哪些厂商支持角标显示？</h3><p>华为角标只有个推原生的sdk支持，其它插件不支持，小米的默认显示角标，其它厂商没有提供角标接口。</p>
+<h3 id="5、ClientID在哪些情况下会改变？"><a href="#5、ClientID在哪些情况下会改变？" class="headerlink" title="5、ClientID在哪些情况下会改变？"></a>5、ClientID在哪些情况下会改变？</h3><ul>
+<li>用户超过三个月未登录，之后再登录会重新生成一个CID；</li>
+<li>卸载应用，且再次调用个推初始化时无外部存储读写权限；</li>
+<li>应用的包名修改。</li>
+</ul>
+<h3 id="6、如何修改推送图标、应用图标？"><a href="#6、如何修改推送图标、应用图标？" class="headerlink" title="6、如何修改推送图标、应用图标？"></a>6、如何修改推送图标、应用图标？</h3><ul>
+<li>通知图标：Unipush页面中的展示样式选择个推默认，然后展开高级设置，可在高级设置中替换通知图标 ；</li>
+<li>应用图标：5+应用版-换量设置页面中可修改应用图标。</li>
+</ul>
+<h3 id="7、unipush-发送透传消息模板，通知栏自动展示透传内容里面的消息"><a href="#7、unipush-发送透传消息模板，通知栏自动展示透传内容里面的消息" class="headerlink" title="7、unipush 发送透传消息模板，通知栏自动展示透传内容里面的消息"></a>7、unipush 发送透传消息模板，通知栏自动展示透传内容里面的消息</h3><ul>
+<li><p>透传内容字段格式需要满足unipush的格式，这样unipush就会字段解析透传内容，将消息展示再通知栏里。</p>
+</li>
+<li><p>透传内容格式：<mark class="note">{“title”: “自定义通知栏标题”,”content”: “自定义通知栏内容”,”payload”: “自定义payload”}</mark></p>
+<p><img src="D:%5Cgetui%5C%E8%B5%84%E6%96%99%5C%E5%B7%A5%E4%BD%9C-%E7%BE%A4%E9%87%8C%E4%B8%8B%E5%8F%91%E7%9A%84%E8%B5%84%E6%96%99%E5%8C%85%5C%E4%B8%8D%E5%A4%96%E6%B5%81%E6%96%87%E6%A1%A3%5CUnipush%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%981127%5Cimage%5CAndroid%E5%8F%8A%E5%A4%9A%E5%8E%82%E5%95%86%5Cunipush%E9%80%8F%E4%BC%A0%E6%A8%A1%E6%9D%BF%E6%A0%BC%E5%BC%8F" alt="1575616323796"></p>
+</li>
+</ul>
+<p>客户端收到通知：</p>
+<img src="C:\Users\me\AppData\Roaming\Typora\typora-user-images\1575616662617.png" alt="1575616662617" style="zoom:200%;" />
+
+
+
+<h2 id="iOS推送常见问题"><a href="#iOS推送常见问题" class="headerlink" title="iOS推送常见问题"></a>iOS推送常见问题</h2><h3 id="1、iOS应用退到后台接收不到消息？"><a href="#1、iOS应用退到后台接收不到消息？" class="headerlink" title="1、iOS应用退到后台接收不到消息？"></a>1、iOS应用退到后台接收不到消息？</h3><p>排查步骤如下：</p>
+<ul>
+<li>iOS应用只能用透传消息模版TransmissionTemplate来推送消息，确认使用的模板；</li>
+<li>查看ClientID和APPID绑定是否对应；</li>
+<li>查看template.setAPNInfo(payload)中payload各字段是否设置正确；</li>
+<li>查看离线时间有没有设置：message.setOffline(true)，如下图：<br><img src="http://docs.getui.com/img/img_getui_question_ios_0.png" alt="img_22"></li>
+<li>使用toApp推送的话，查看phoneTypeList()是否设置有误；</li>
+<li>开发者平台故障排查中可根据Clientid查看devicetoken，确认Clientid和devicetoken绑定是否正确。如果没有绑定成功则可能因网络问题导致信息没有提交上来，24小时后会自动更新绑定关系（如果是测试过程，则可以找技术支持协助处理一下)。</li>
+</ul>
+<h3 id="2、在发布到appstore时，证书需要更换吗？"><a href="#2、在发布到appstore时，证书需要更换吗？" class="headerlink" title="2、在发布到appstore时，证书需要更换吗？"></a>2、在发布到appstore时，证书需要更换吗？</h3><p>开发的时候需要上传开发证书，开发测试OK后，发布到appstore之前，需要把证书更换成生产证书，证书更换后10分钟左右生效。 </p>
+<h3 id="3、为什么devicetoken无效？"><a href="#3、为什么devicetoken无效？" class="headerlink" title="3、为什么devicetoken无效？"></a>3、为什么devicetoken无效？</h3><ul>
+<li>一般来说是证书环境的问题。</li>
+<li>先看clientID和devicetoken绑定是否有问题，可以把clientID和devicetoken提供给技术支持协助查询。</li>
+<li>查看本地(Xcode)的.cer证书环境与平台上传的.p12推送证书环境是否一致。</li>
+<li>iOS证书的生成，请参考 <a href="http://docs.getui.com/getui/mobile/ios/apns/" target="_blank" rel="noopener">http://docs.getui.com/getui/mobile/ios/apns/</a>  文档。</li>
+</ul>
+<h3 id="4、iOS应用如何让角标badge自动加1？"><a href="#4、iOS应用如何让角标badge自动加1？" class="headerlink" title="4、iOS应用如何让角标badge自动加1？"></a>4、iOS应用如何让角标badge自动加1？</h3><ul>
+<li>这个需要客户端与服务端进行协助处理，但只适合用对单个用户进行推送，群推和批量推送都不适合。目前java和restAPI支持自动累加，autobadge（+1）。</li>
+<li>客户端读取未读数量并汇报给服务端，当未读数量更新时也要汇报给服务端。</li>
+<li>服务端接收到未读数量后对应用户ID保存起来，当服务端进行推送消息时先去查询未读数量，然后再根据未读数量进行加1后调用API接口进行推送。</li>
+</ul>
+<h3 id="5、iOS应用在后台收不到apns通知是什么原因有哪些？"><a href="#5、iOS应用在后台收不到apns通知是什么原因有哪些？" class="headerlink" title="5、iOS应用在后台收不到apns通知是什么原因有哪些？"></a>5、iOS应用在后台收不到apns通知是什么原因有哪些？</h3><ul>
+<li>如果是服务端推送，代码查看是否有设置setapninfo的方法，是否设置了离线（isoffline=true）；</li>
+<li>客户端查看devicetoken是否有获取到，如果获取到了，请在应用配置页面使用上传证书处的测试一下功能，测试看看返回什么结果，返回测试可用才说明证书环境是一致的；</li>
+<li>ios推送证书检查一下是否过期了，上传证书的地方，可以看到证书的有效期，如果已经过期了，请重新导出证书，然后上传；</li>
+<li>如果以上情况都正常，可提供taskid让技术人员查询一下具体的日志。</li>
+</ul>
+<h2 id="Unipush后台使用常见问题"><a href="#Unipush后台使用常见问题" class="headerlink" title="Unipush后台使用常见问题"></a>Unipush后台使用常见问题</h2><h3 id="1、为什么出现上传iOS证书提示“证书环境错误”？"><a href="#1、为什么出现上传iOS证书提示“证书环境错误”？" class="headerlink" title="1、为什么出现上传iOS证书提示“证书环境错误”？"></a>1、为什么出现上传iOS证书提示“证书环境错误”？</h3><p>导证书不要把钥匙串也导进来，解决方法可参考 <a href="http://docs.getui.com/getui/mobile/ios/apns/" target="_blank" rel="noopener">http://docs.getui.com/getui/mobile/ios/apns/</a> 重新导出，单独选择证书。</p>
+<h3 id="2、为什么通知消息页面的发送预览功能，填写测试预览的cid后提示”没有对该cid的操作权限“？"><a href="#2、为什么通知消息页面的发送预览功能，填写测试预览的cid后提示”没有对该cid的操作权限“？" class="headerlink" title="2、为什么通知消息页面的发送预览功能，填写测试预览的cid后提示”没有对该cid的操作权限“？"></a>2、为什么通知消息页面的发送预览功能，填写测试预览的cid后提示”没有对该cid的操作权限“？</h3><p>请按以下可能原因进行排查：</p>
+<ul>
+<li>cid 和 appid 是否对应 ；</li>
+<li>重新获取cid ，拿新的cid 去测试。</li>
+</ul>
+<h3 id="3、如何确认CID和devicetoken的绑定关系是否正确"><a href="#3、如何确认CID和devicetoken的绑定关系是否正确" class="headerlink" title="3、如何确认CID和devicetoken的绑定关系是否正确?"></a>3、如何确认CID和devicetoken的绑定关系是否正确?</h3><p>在配置管理-故障排查页面，可根据Clientid查看devicetoken，确认Clientid和devicetoken绑定是否正确。如果没有绑定成功则可能因网络问题导致信息没有提交上来，24小时后会自动更新绑定关系（如果是测试过程，则可以找技术支持协助处理一下)。</p>
+<h2 id="调用个推服务端api遇到的常见问题"><a href="#调用个推服务端api遇到的常见问题" class="headerlink" title="调用个推服务端api遇到的常见问题"></a>调用个推服务端api遇到的常见问题</h2><h3 id="1、用uniPush里面的个推-服务端api推送-推送返回报-AppidError"><a href="#1、用uniPush里面的个推-服务端api推送-推送返回报-AppidError" class="headerlink" title="1、用uniPush里面的个推 服务端api推送 推送返回报 AppidError"></a>1、用uniPush里面的个推 服务端api推送 推送返回报 AppidError</h3><p>一般是HBUILDERX工具没有<mark class="note">提交云端打包</mark>造成。否则绑定的appid其实是unipush那边的虚拟appid。需要提交云端打包，自己的app参数才会生效。</p>
+<p>步骤：</p>
+<p>点击控制栏：</p>
+<p>运行—&gt; 原生APP-云打包—&gt;选择自有证书，打正式包。</p>
+<p>注意：<mark class="note">测试走厂商通道的时候，证书里面的指纹需要与厂商平台上填写的指纹证书一致</mark></p>
+<p><img src="D:%5Cgetui%5C%E8%B5%84%E6%96%99%5C%E5%B7%A5%E4%BD%9C-%E7%BE%A4%E9%87%8C%E4%B8%8B%E5%8F%91%E7%9A%84%E8%B5%84%E6%96%99%E5%8C%85%5C%E4%B8%8D%E5%A4%96%E6%B5%81%E6%96%87%E6%A1%A3%5CUnipush%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%981127%5Cimage%5CAndroid%E5%8F%8A%E5%A4%9A%E5%8E%82%E5%95%86%5C%E6%8F%90%E4%BA%A4%E4%BA%91%E7%AB%AF%E6%89%93%E5%8C%85" alt="1575614062060"></p>
+<p><img src="D:%5Cgetui%5C%E8%B5%84%E6%96%99%5C%E5%B7%A5%E4%BD%9C-%E7%BE%A4%E9%87%8C%E4%B8%8B%E5%8F%91%E7%9A%84%E8%B5%84%E6%96%99%E5%8C%85%5C%E4%B8%8D%E5%A4%96%E6%B5%81%E6%96%87%E6%A1%A3%5CUnipush%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%981127%5Cimage%5CAndroid%E5%8F%8A%E5%A4%9A%E5%8E%82%E5%95%86%5C%E4%BA%91%E7%AB%AF%E6%89%93%E5%8C%85%E8%AF%81%E4%B9%A6" alt="1575614350716"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2019/12/08/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+]]></content>
+  </entry>
+</search>
