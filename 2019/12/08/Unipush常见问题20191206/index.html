@@ -5,14 +5,27 @@
   
 
   
-  <title>Hexo</title>
+  <title>Unipush常见问题20191206 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">
+  <meta name="description" content="Unipush常见问题概述使用此文档前，请先 认真阅读 UniPush 使用指南 及文中涉及到的相关文档说明，了解下什么是 UniPush。  本文分多厂商接入流程介绍、Android及厂商推送常见问题、iOS推送常见问题和Unipush后台常见问题四部分内容，旨在帮助使用Unipush的用户解决集成或使用过程中常遇见的问题，让用户更顺畅地使用Unipush。 如按照本文介绍的内容排查问题之后仍有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unipush常见问题20191206">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;Unipush%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%9820191206&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Unipush常见问题概述使用此文档前，请先 认真阅读 UniPush 使用指南 及文中涉及到的相关文档说明，了解下什么是 UniPush。  本文分多厂商接入流程介绍、Android及厂商推送常见问题、iOS推送常见问题和Unipush后台常见问题四部分内容，旨在帮助使用Unipush的用户解决集成或使用过程中常遇见的问题，让用户更顺畅地使用Unipush。 如按照本文介绍的内容排查问题之后仍有">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;Unipush%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%9820191206&#x2F;image%5CAndroid%E5%8F%8A%E5%A4%9A%E5%8E%82%E5%95%86%5C%E5%8E%82%E5%95%86%E6%8E%A8%E9%80%81%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;Unipush%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%9820191206&#x2F;image%5CAndroid%E5%8F%8A%E5%A4%9A%E5%8E%82%E5%95%86%5C%E5%8D%8E%E4%B8%BA%E5%B9%B3%E5%8F%B0sha256%E6%8C%87%E7%BA%B9%E8%AF%81%E4%B9%A6%E5%A1%AB%E5%86%99.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;Unipush%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%9820191206&#x2F;image%5CAndroid%E5%8F%8A%E5%A4%9A%E5%8E%82%E5%95%86%5CAndroid%E5%BA%94%E7%94%A8%E8%AF%81%E4%B9%A6%E9%85%8D%E7%BD%AE.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;Unipush%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%9820191206&#x2F;image%5CAndroid%E5%8F%8A%E5%A4%9A%E5%8E%82%E5%95%86%5C%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%8E%A5%E6%94%B6-intent%E5%8F%82%E6%95%B0-%E4%B9%B1%E7%A0%81.png">
+<meta property="og:image" content="d:%5Cgetui%5C%E8%B5%84%E6%96%99%5C%E5%B7%A5%E4%BD%9C-%E7%BE%A4%E9%87%8C%E4%B8%8B%E5%8F%91%E7%9A%84%E8%B5%84%E6%96%99%E5%8C%85%5C%E4%B8%8D%E5%A4%96%E6%B5%81%E6%96%87%E6%A1%A3%5CUnipush%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%981127%5Cimage%5CAndroid%E5%8F%8A%E5%A4%9A%E5%8E%82%E5%95%86%5Cunipush%E9%80%8F%E4%BC%A0%E6%A8%A1%E6%9D%BF%E6%A0%BC%E5%BC%8F">
+<meta property="og:image" content="c:&#x2F;Users&#x2F;me&#x2F;AppData&#x2F;Roaming&#x2F;Typora&#x2F;typora-user-images&#x2F;1575616662617.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;docs.getui.com&#x2F;img&#x2F;img_getui_question_ios_0.png">
+<meta property="og:image" content="d:%5Cgetui%5C%E8%B5%84%E6%96%99%5C%E5%B7%A5%E4%BD%9C-%E7%BE%A4%E9%87%8C%E4%B8%8B%E5%8F%91%E7%9A%84%E8%B5%84%E6%96%99%E5%8C%85%5C%E4%B8%8D%E5%A4%96%E6%B5%81%E6%96%87%E6%A1%A3%5CUnipush%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%981127%5Cimage%5CAndroid%E5%8F%8A%E5%A4%9A%E5%8E%82%E5%95%86%5C%E6%8F%90%E4%BA%A4%E4%BA%91%E7%AB%AF%E6%89%93%E5%8C%85">
+<meta property="og:image" content="d:%5Cgetui%5C%E8%B5%84%E6%96%99%5C%E5%B7%A5%E4%BD%9C-%E7%BE%A4%E9%87%8C%E4%B8%8B%E5%8F%91%E7%9A%84%E8%B5%84%E6%96%99%E5%8C%85%5C%E4%B8%8D%E5%A4%96%E6%B5%81%E6%96%87%E6%A1%A3%5CUnipush%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%981127%5Cimage%5CAndroid%E5%8F%8A%E5%A4%9A%E5%8E%82%E5%95%86%5C%E4%BA%91%E7%AB%AF%E6%89%93%E5%8C%85%E8%AF%81%E4%B9%A6">
+<meta property="og:updated_time" content="2019-12-06T07:26:44.322Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;Unipush%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%9820191206&#x2F;image%5CAndroid%E5%8F%8A%E5%A4%9A%E5%8E%82%E5%95%86%5C%E5%8E%82%E5%95%86%E6%8E%A8%E9%80%81%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -59,9 +72,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-Unipush常见问题20191206" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Unipush常见问题20191206" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/12/08/Unipush%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%9820191206/" class="article-date">
   <time datetime="2019-12-08T05:39:50.396Z" itemprop="datePublished">2019-12-08</time>
@@ -74,8 +85,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/08/Unipush%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%9820191206/">Unipush常见问题20191206</a>
+    <h1 class="article-title" itemprop="name">
+      Unipush常见问题20191206
     </h1>
   
 
@@ -216,60 +227,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/12/08/hello-world/" class="article-date">
-  <time datetime="2019-12-08T04:55:06.359Z" itemprop="datePublished">2019-12-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/08/hello-world/">Hello World</a>
-    </h1>
+    <a href="/2019/12/08/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo server</span></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo generate</span></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/08/hello-world/" data-id="ck3wjwtd800003gttdx34an41" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-
 
 </section>
         
